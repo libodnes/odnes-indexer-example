@@ -11,7 +11,7 @@ class Example(Datasource):
         datasource_objects = []
         self.print_info(f"Started search for domain {domain}")
         datasource_object = DatasourceObject(
-            domain=subdomain,
+            domain=domain,
             DNSData = [
                 DNSRecordGenerator(
                     source=self.__class__.__name__, 
