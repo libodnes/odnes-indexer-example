@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "odnes-indexer-example"
+version = "0.0.1"
+description = ""
+authors = ["Ondrej Dohnal <xdohna45@vutbr.cz>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "odnes", from = "src" }
+]
+
+
+[tool.poetry.dependencies]
+python = ">3.11, <=3.15"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
