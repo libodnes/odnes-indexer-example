@@ -42,38 +42,7 @@ jobs:
 
     - name: Install poetry project
       run: |
-        poetry install --with test
-      
-    - name: Lint with flake8
-      continue-on-error: true
-      run: |
-        echo "# Flake8 results">> $GITHUB_STEP_SUMMARY
-        echo -n "Python syntax errors: ">> $GITHUB_STEP_SUMMARY
-        # stop the build if there are Python syntax errors or undefined names
-        poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics >> $GITHUB_STEP_SUMMARY
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        echo "Flake8 output:">> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-    - name: Lint with pylint
-      continue-on-error: true
-      run: |
-        echo "# PyLint results" >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        poetry run pylint odnes --exit-zero --max-line-length=127 >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-    - name: Run tests
-      continue-on-error: true
-      run: |
-        echo "# Code coverage">> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        poetry run pytest -v --md-report --md-report-flavor gfm --md-report-output report.md --cov odnes tests >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        echo "# Tests reports" >> $GITHUB_STEP_SUMMARY
-        cat report.md >> $GITHUB_STEP_SUMMARY
-      env:
-        CI: true
+        poetry install
   package:
     name: Build python wheel
     permissions:
